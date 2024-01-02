@@ -33,6 +33,10 @@ function addDot() {
   }
 }
 
+function monDot() {
+  slide.length; // nombre d'image donc nombre de point
+}
+
 function changeDot() {
   const dotSelected = document.querySelector(".dot_selected");
   dotSelected.classList.remove("dot_selected");
