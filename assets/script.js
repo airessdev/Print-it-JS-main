@@ -17,12 +17,8 @@ const slides = [
     tagLine: "Autocollants <span>avec découpe laser sur mesure</span>",
   },
 ];
-slides[0].image; // acceder au 1er élement à un tableau d'objet
 
-let flechegauche = document.getElementById("arl");
-let flechedroite = document.getElementById("arr");
-
-function add2() {
+function addDot() {
   const dots = document.querySelector(".dots");
   const dotElement = document.createElement("div");
 
@@ -46,22 +42,19 @@ function changeDot() {
 
 function changeImageGauche() {
   const pathimg = "./assets/images/slideshow/";
+  let text = document.querySelector("#banner p");
+  let image = document.querySelector(".banner-img");
   positionSlide--;
   if (positionSlide < 0) {
     positionSlide = slides.length - 1;
-    let image = document.querySelector(".banner-img");
-    image.src = pathimg + slides[positionSlide].image;
   } else {
-    if (positionSlide < slides.length) {
-      let image = document.querySelector(".banner-img");
-      image.src = pathimg + slides[positionSlide].image;
-    }
+    image.src = pathimg + slides[positionSlide].image;
   }
+  image.src = pathimg + slides[positionSlide].image;
+  text.innerHTML = slides[positionSlide].tagLine;
   console.log(positionSlide);
   changeDot();
 }
-
-var positionSlide = 0;
 
 function changeImageDroite() {
   const pathImg = "./assets/images/slideshow/";
@@ -78,10 +71,15 @@ function changeImageDroite() {
   text.innerHTML = slides[positionSlide].tagLine;
   changeDot();
 }
-flechedroite.addEventListener("click", changeImageDroite);
-flechegauche.addEventListener("click", changeImageGauche);
 
-add2();
+var positionSlide = 0;
+let flecheGauche = document.getElementById("arrowLeft");
+let flecheDroite = document.getElementById("arrowRight");
+
+flecheDroite.addEventListener("click", changeImageDroite);
+flecheGauche.addEventListener("click", changeImageGauche);
+
+addDot();
 
 // modifier variable en camelcase et lever les doutes des variables et fonctions
 // coder proprement
