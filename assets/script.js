@@ -33,9 +33,27 @@ function addDot() {
   }
 }
 
-function monDot() {
-  slide.length; // nombre d'image donc nombre de point
-}
+// function monDot() {
+//   const points = document.querySelector(".dots");
+//   console.log(points);
+//   for (let iSlides in slides) {
+//     const point = document.createElement("span");
+//     point.classList.add("dot");
+//     point.id = "point_" + iSlides;
+//     if (iSlides == 0) {
+//       point.classList.add("dot_selected");
+//     }
+//     points.appendChild(point);
+//     console.log(point.id);
+//   }
+// }
+// monDot();
+// function monChangeDot() {
+//   const pointActuel = document.querySelector(".point_" + (positionSlide + 1));
+//   pointActuel.classList.add("dot_selected");
+//   document.appendChild(pointActuel);
+// }
+// monChangeDot();
 
 function changeDot() {
   const dotSelected = document.querySelector(".dot_selected");
@@ -45,22 +63,20 @@ function changeDot() {
 }
 
 function changeImageGauche() {
-  const pathimg = "./assets/images/slideshow/";
+  const pathImg = "./assets/images/slideshow/";
   let text = document.querySelector("#banner p");
   let image = document.querySelector(".banner-img");
   positionSlide--;
   if (positionSlide < 0) {
     positionSlide = slides.length - 1;
-  } else {
-    image.src = pathimg + slides[positionSlide].image;
   }
-  image.src = pathimg + slides[positionSlide].image;
+  image.src = pathImg + slides[positionSlide].image;
   text.innerHTML = slides[positionSlide].tagLine;
   console.log(positionSlide);
   changeDot();
 }
 
-function changeImageDroite() {
+function changeImageDroite(event) {
   const pathImg = "./assets/images/slideshow/";
   let image = document.querySelector(".banner-img");
   let text = document.querySelector("#banner p");
@@ -74,6 +90,7 @@ function changeImageDroite() {
   image.src = pathImg + slides[positionSlide].image;
   text.innerHTML = slides[positionSlide].tagLine;
   changeDot();
+  console.log(event);
 }
 
 var positionSlide = 0;
@@ -84,6 +101,3 @@ flecheDroite.addEventListener("click", changeImageDroite);
 flecheGauche.addEventListener("click", changeImageGauche);
 
 addDot();
-
-// modifier variable en camelcase et lever les doutes des variables et fonctions
-// coder proprement
